@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="BlackLine – Instant QR Code Generator by Artheid Studio">
+  <title>BlackLine – QR Code Generator | Artheid Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-mark">BL</span>
+        <div class="logo-text">
+          <h1>BlackLine</h1>
+          <p>by Artheid Studio</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="controls" aria-labelledby="controls-heading">
+        <h2 id="controls-heading" class="sr-only">QR Code Controls</h2>
+
+        <div class="field">
+          <label for="content">Text / URL / Link / Any content</label>
+          <textarea
+            id="content"
+            rows="4"
+            placeholder="Paste a link, type any text, or enter photo/video URL…"
+            autocomplete="off"
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="fg-color">Foreground</label>
+            <div class="color-wrap">
+              <input type="color" id="fg-color" value="#000000" aria-label="Foreground color">
+              <span id="fg-hex" class="hex">#000000</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="bg-color">Background</label>
+            <div class="color-wrap">
+              <input type="color" id="bg-color" value="#ffffff" aria-label="Background color">
+              <span id="bg-hex" class="hex">#ffffff</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="size">Size (px)</label>
+            <input type="range" id="size" min="128" max="512" step="32" value="256" aria-valuemin="128" aria-valuemax="512" aria-valuenow="256">
+            <div class="range-value"><span id="size-value">256</span> px</div>
+          </div>
+          <div class="field">
+            <label for="ecl">Error Correction</label>
+            <select id="ecl" aria-label="Error correction level">
+              <option value="L">L – Low (7%)</option>
+              <option value="M" selected>M – Medium (15%)</option>
+              <option value="Q">Q – Quartile (25%)</option>
+              <option value="H">H – High (30%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="download-btn" class="btn primary" disabled>
+            Download PNG
+          </button>
+          <button type="button" id="clear-btn" class="btn secondary">
+            Clear
+          </button>
+        </div>
+      </section>
+
+      <section class="preview" aria-labelledby="preview-heading">
+        <h2 id="preview-heading" class="sr-only">Live Preview</h2>
+        <div class="preview-card">
+          <div id="qrcode" class="qr-container" role="img" aria-label="QR code preview"></div>
+          <p id="status" class="status">Type something to generate a QR code</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>BlackLine &copy; <span id="year"></span> Artheid Studio · Works offline · Mobile &amp; Desktop</p>
+    </footer>
+  </div>
+
+  <script src="qrcode.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
